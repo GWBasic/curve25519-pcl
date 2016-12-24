@@ -24,7 +24,6 @@ namespace Whispersystems.Curve25519
     /// </summary>
     public class Curve25519KeyPair
     {
-
         private readonly byte[] publicKey;
         private readonly byte[] privateKey;
 
@@ -34,20 +33,22 @@ namespace Whispersystems.Curve25519
             this.privateKey = privateKey;
         }
 
-        /**
-         * @return The Curve25519 public key.
-         */
-        public byte[] getPublicKey()
+		/// <summary>
+		/// The Curve25519 public key
+		/// </summary>
+		/// <value>The public key.</value>
+        public byte[] PublicKey
         {
-            return publicKey;
+			get { return this.publicKey; }
         }
 
-        /**
-         * @return The Curve25519 private key.
-         */
-        public byte[] getPrivateKey()
+		/// <summary>
+		/// The Curve25519 private key
+		/// </summary>
+		/// <value>The private key.</value>
+        public byte[] PrivateKey
         {
-            return privateKey;
+			get { return this.privateKey; }
         }
     }
 }

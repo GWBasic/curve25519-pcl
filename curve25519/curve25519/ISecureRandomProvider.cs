@@ -22,7 +22,7 @@ namespace Whispersystems.Curve25519
     /// </summary>
     public interface ISecureRandomProvider
     {
-        void nextBytes(byte[] output);
-        int nextInt(int maxValue);
+        void NextBytes(byte[] output);
+        int NextInt(int maxValue);
     }
 }

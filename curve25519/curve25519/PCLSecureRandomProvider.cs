@@ -15,27 +15,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using Whispersystems.Curve25519;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace curve25519
+namespace Whispersystems.Curve25519
 {
     /// <summary>
     /// Exposes the PCLCrypto library as a source of secure random information.
     /// See https://github.com/AArnott/PCLCrypto for details.
     /// </summary>
-    public class PCLSecureRandomProvider : ISecureRandomProvider
+
+	// TODO: This should inhert from .Net's RandomNumberGenerator
+
+	public class PCLSecureRandomProvider : ISecureRandomProvider
     {
-        public void nextBytes(byte[] output)
+        public void NextBytes(byte[] output)
         {
             PCLCrypto.NetFxCrypto.RandomNumberGenerator.GetBytes(output);
         }
 
-        public int nextInt(int maxValue)
+        public int NextInt(int maxValue)
         {
             int randomInt = (int)PCLCrypto.WinRTCrypto.CryptographicBuffer.GenerateRandomNumber() % maxValue;
             return randomInt;

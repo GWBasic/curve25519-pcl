@@ -73,7 +73,7 @@ namespace Whispersystems.Curve25519
 
 		public virtual byte[] GeneratePrivateKey()
         {
-            byte[] random = GetRandomBytes(Curve25519Provider.PRIVATE_KEY_LEN);
+            byte[] random = this.GetRandomBytes(Curve25519Provider.PRIVATE_KEY_LEN);
             return GeneratePrivateKey(random);
         }
 
@@ -110,7 +110,7 @@ namespace Whispersystems.Curve25519
 		public virtual byte[] GetRandomBytes(int length)
         {
             byte[] result = new byte[length];
-            secureRandomProvider.nextBytes(result);
+            this.secureRandomProvider.NextBytes(result);
             return result;
         }
     }

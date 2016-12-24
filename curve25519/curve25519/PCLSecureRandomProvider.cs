@@ -27,9 +27,6 @@ namespace Whispersystems.Curve25519
     /// Exposes the PCLCrypto library as a source of secure random information.
     /// See https://github.com/AArnott/PCLCrypto for details.
     /// </summary>
-
-	// TODO: This should inhert from .Net's RandomNumberGenerator
-
 	public class PCLSecureRandomProvider : ISecureRandomProvider
     {
         public void NextBytes(byte[] output)

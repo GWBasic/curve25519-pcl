@@ -33,7 +33,7 @@ namespace curve25519
     /// </summary>
     public class DonnaCSharpCurve25519Provider : Curve25519Provider
     {
-        public DonnaCSharpCurve25519Provider(ISha512 sha512provider, SecureRandomProvider secureRandomProvider)
+        public DonnaCSharpCurve25519Provider(ISha512 sha512provider, ISecureRandomProvider secureRandomProvider)
             : base(sha512provider, secureRandomProvider) { }
 
         private byte[] basepoint = new byte[] {

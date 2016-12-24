@@ -28,7 +28,7 @@ namespace curve25519
     /// Exposes the PCLCrypto library as a source of secure random information.
     /// See https://github.com/AArnott/PCLCrypto for details.
     /// </summary>
-    public class PCLSecureRandomProvider : SecureRandomProvider
+    public class PCLSecureRandomProvider : ISecureRandomProvider
     {
         public void nextBytes(byte[] output)
         {

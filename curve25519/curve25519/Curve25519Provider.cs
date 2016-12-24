@@ -28,7 +28,7 @@ namespace org.whispersystems.curve25519
 		public const int PRIVATE_KEY_LEN = 32;
 
         private ISha512 sha512provider;
-        private SecureRandomProvider secureRandomProvider;
+        private ISecureRandomProvider secureRandomProvider;
 
         public Curve25519Provider()
         {
@@ -37,13 +37,13 @@ namespace org.whispersystems.curve25519
         }
 
         protected Curve25519Provider(ISha512 sha512provider,
-                                             SecureRandomProvider secureRandomProvider)
+                                             ISecureRandomProvider secureRandomProvider)
         {
             this.sha512provider = sha512provider;
             this.secureRandomProvider = secureRandomProvider;
         }
 
-		public virtual SecureRandomProvider RandomProvider
+		public virtual ISecureRandomProvider RandomProvider
         {
 			set { this.secureRandomProvider = value; }
         }

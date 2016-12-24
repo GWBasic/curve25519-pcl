@@ -103,7 +103,7 @@
     <Compile Include="PCLSecureRandomProvider.cs" />
     <Compile Include="pcl\IPclCloneable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecureRandomProvider.cs" />
+    <Compile Include="ISecureRandomProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bc-crypto\README.md" />

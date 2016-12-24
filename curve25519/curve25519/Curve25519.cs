@@ -65,16 +65,16 @@ namespace org.whispersystems.curve25519
             return ConstructInstance(type, new BouncyCastleDotNETSha512Provider(), new PCLSecureRandomProvider());
         }
 
-		public static Curve25519 ConstructInstance(ImplementationType type, csharp.ISha512 sha, SecureRandomProvider random)
+		public static Curve25519 ConstructInstance(ImplementationType type, csharp.ISha512 sha, ISecureRandomProvider random)
         {
             switch (type)
             {
 				case ImplementationType.Best:
                 default:
-					return new Curve25519(ConstructBestProvider(sha, random));
+					return new Curve25519(new DonnaCSharpCurve25519Provider(sha, random));
 
 				case ImplementationType.Csharp:
-					return new Curve25519(ConstructCSharpProvider(sha, random));
+					return new Curve25519(new ManagedCurve25519Provider(sha, random));
             }
         }
 
@@ -165,22 +165,5 @@ namespace org.whispersystems.curve25519
         {
 			return this.provider.VerifySignature(publicKey, message, signature);
         }
-
-        private static ICurve25519Provider ConstructCSharpProvider(csharp.ISha512 sha, SecureRandomProvider random)
-        {
-			return new ManagedCurve25519Provider(sha, random);
-        }
-
-        private static ICurve25519Provider ConstructBestProvider(csharp.ISha512 sha, SecureRandomProvider random)
-        {
-			return new DonnaCSharpCurve25519Provider(sha, random);
-        }
-
-        /* TODO: Implement as appropriate to grow the flexibility of the library...
-        private static Curve25519Provider constructNativeProvider(SecureRandomProvider random)
-        {
-            return constructClass("NativeCurve25519Provider", random);
-        }
-        */
     }
 }

@@ -20,7 +20,7 @@ namespace org.whispersystems.curve25519
     /// <summary>
     /// Provider for secure random material for key generation, etc.
     /// </summary>
-    public interface SecureRandomProvider
+    public interface ISecureRandomProvider
     {
         void nextBytes(byte[] output);
         int nextInt(int maxValue);

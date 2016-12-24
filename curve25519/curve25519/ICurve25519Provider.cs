@@ -33,7 +33,7 @@ namespace org.whispersystems.curve25519
 
 		bool IsNative { get; }
         
-		SecureRandomProvider RandomProvider { set; }
+		ISecureRandomProvider RandomProvider { set; }
 		ISha512 Sha512Provider { set; }
         bool VerifySignature(byte[] publicKey, byte[] message, byte[] signature);
     }

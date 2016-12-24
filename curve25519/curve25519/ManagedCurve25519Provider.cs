@@ -43,7 +43,7 @@ namespace curve25519
         {
         }
 
-        public ManagedCurve25519Provider(ISha512 sha, SecureRandomProvider random)
+        public ManagedCurve25519Provider(ISha512 sha, ISecureRandomProvider random)
             : base(sha, random)
         {
         }

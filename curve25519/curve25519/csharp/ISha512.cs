@@ -17,9 +17,8 @@
 
 namespace org.whispersystems.curve25519.csharp {
 
-    public interface ISha512 {
-
-        void calculateDigest(byte[] digestOut, byte[] inData, long length);
-
+    public interface ISha512
+	{
+        void CalculateDigest(byte[] digestOut, byte[] inData, long length);
     }
 }

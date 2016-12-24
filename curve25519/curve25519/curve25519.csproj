@@ -34,12 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BaseCSharpCurve25519Provider.cs" />
+    <Compile Include="Curve25519Provider.cs" />
     <Compile Include="bc-crypto\digests\LongDigest.cs" />
     <Compile Include="bc-crypto\digests\Sha512Digest.cs" />
     <Compile Include="bc-crypto\IDigest.cs" />
     <Compile Include="bc-crypto\util\Pack.cs" />
-    <Compile Include="CSharpCurve25519Provider.cs" />
+    <Compile Include="ManagedCurve25519Provider.cs" />
     <Compile Include="csharp\Arrays.cs" />
     <Compile Include="csharp\crypto_verify_32.cs" />
     <Compile Include="csharp\curve_sigs.cs" />
@@ -96,7 +96,7 @@
     <Compile Include="csharp\sign_modified.cs" />
     <Compile Include="Curve25519.cs" />
     <Compile Include="Curve25519KeyPair.cs" />
-    <Compile Include="Curve25519Provider.cs" />
+    <Compile Include="ICurve25519Provider.cs" />
     <Compile Include="BouncyCastleDotNETSha512Provider.cs" />
     <Compile Include="DonnaCSharpCurve25519Provider.cs" />
     <Compile Include="donna\Curve25519Donna.cs" />

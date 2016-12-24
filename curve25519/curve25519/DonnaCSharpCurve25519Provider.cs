@@ -31,7 +31,7 @@ namespace curve25519
     /// Uses the "Donna" implementation for private/public key manipulation and agreement,
     /// but retains the Ed25519 implementation from its base class for signatures and verification.
     /// </summary>
-    public class DonnaCSharpCurve25519Provider : BaseCSharpCurve25519Provider
+    public class DonnaCSharpCurve25519Provider : Curve25519Provider
     {
         public DonnaCSharpCurve25519Provider(ISha512 sha512provider, SecureRandomProvider secureRandomProvider)
             : base(sha512provider, secureRandomProvider) { }
@@ -42,23 +42,23 @@ namespace curve25519
             0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0 };
 
-        public override byte[] generatePublicKey(byte[] privateKey)
+        public override byte[] GeneratePublicKey(byte[] privateKey)
         {
             byte[] publicKey = new byte[32];
             Curve25519Donna.curve25519_donna(publicKey, privateKey, basepoint);
             return publicKey;
         }
 
-        public override byte[] calculateAgreement(byte[] ourPrivate, byte[] theirPublic)
+        public override byte[] CalculateAgreement(byte[] ourPrivate, byte[] theirPublic)
         {
             byte[] sharedKeyAgreement = new byte[32];
             Curve25519Donna.curve25519_donna(sharedKeyAgreement, ourPrivate, theirPublic);
             return sharedKeyAgreement;
         }
 
-        public override bool isNative()
+        public override bool IsNative
         {
-            return false;
+			get { return false; }
         }
     }
 }

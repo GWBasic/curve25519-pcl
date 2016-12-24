@@ -16,25 +16,102 @@
  */
 
 using org.whispersystems.curve25519.csharp;
+using System;
 
 namespace org.whispersystems.curve25519
 {
     /// <summary>
-    /// Base class for all implementations of providers Curve25519.
+    /// Curve255919 in pure C#, without "donna" performance optimizations.
     /// </summary>
-    public abstract class Curve25519Provider
+    public abstract class Curve25519Provider : ICurve25519Provider
     {
-        public const int PRIVATE_KEY_LEN = 32;
+		public const int PRIVATE_KEY_LEN = 32;
 
-        public abstract byte[] calculateAgreement(byte[] ourPrivate, byte[] theirPublic);
-        public abstract byte[] calculateSignature(byte[] random, byte[] privateKey, byte[] message);
-        public abstract byte[] generatePrivateKey();
-        public abstract byte[] generatePrivateKey(byte[] random);
-        public abstract byte[] generatePublicKey(byte[] privateKey);
-        public abstract byte[] getRandom(int length);
-        public abstract bool isNative();
-        public abstract void setRandomProvider(SecureRandomProvider provider);
-        public abstract void setSha512Provider(ISha512 provider);
-        public abstract bool verifySignature(byte[] publicKey, byte[] message, byte[] signature);
+        private ISha512 sha512provider;
+        private SecureRandomProvider secureRandomProvider;
+
+        public Curve25519Provider()
+        {
+            sha512provider = null;
+            secureRandomProvider = null;
+        }
+
+        protected Curve25519Provider(ISha512 sha512provider,
+                                             SecureRandomProvider secureRandomProvider)
+        {
+            this.sha512provider = sha512provider;
+            this.secureRandomProvider = secureRandomProvider;
+        }
+
+		public virtual SecureRandomProvider RandomProvider
+        {
+			set { this.secureRandomProvider = value; }
+        }
+
+		public virtual ISha512 Sha512Provider
+        {
+			set { this.sha512provider = value; }
+        }
+
+		public abstract bool IsNative { get; }
+
+		public virtual byte[] CalculateAgreement(byte[] ourPrivate, byte[] theirPublic)
+        {
+            byte[] agreement = new byte[32];
+            Scalarmult.crypto_scalarmult(agreement, ourPrivate, theirPublic);
+
+            return agreement;
+        }
+
+        public virtual byte[] GeneratePublicKey(byte[] privateKey)
+        {
+            byte[] publicKey = new byte[32];
+            Curve_sigs.curve25519_keygen(publicKey, privateKey);
+
+            return publicKey;
+        }
+
+		public virtual byte[] GeneratePrivateKey()
+        {
+            byte[] random = GetRandomBytes(Curve25519Provider.PRIVATE_KEY_LEN);
+            return GeneratePrivateKey(random);
+        }
+
+		public virtual byte[] GeneratePrivateKey(byte[] random)
+        {
+            byte[] privateKey = new byte[32];
+
+            Array.Copy(random, 0, privateKey, 0, 32);
+
+            privateKey[0] &= 248;
+            privateKey[31] &= 127;
+            privateKey[31] |= 64;
+
+            return privateKey;
+        }
+
+		public virtual byte[] CalculateSignature(byte[] random, byte[] privateKey, byte[] message)
+        {
+            byte[] result = new byte[64];
+
+            if (Curve_sigs.curve25519_sign(sha512provider, result, privateKey, message, message.Length, random) != 0)
+            {
+                throw new ArgumentException("Message exceeds max length!");
+            }
+
+            return result;
+        }
+
+		public virtual bool VerifySignature(byte[] publicKey, byte[] message, byte[] signature)
+        {
+            return Curve_sigs.curve25519_verify(sha512provider, signature, publicKey, message, message.Length) == 0;
+        }
+
+		public virtual byte[] GetRandomBytes(int length)
+        {
+            byte[] result = new byte[length];
+            secureRandomProvider.nextBytes(result);
+            return result;
+        }
     }
 }

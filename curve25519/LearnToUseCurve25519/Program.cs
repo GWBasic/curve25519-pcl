@@ -8,10 +8,11 @@ namespace LearnToUseCurve25519
 	{
 		public static void Main (string [] args)
 		{
-			var curve = Curve25519.getInstance(Curve25519.BEST);
+			var curve = Curve25519.ConstructInstance(Curve25519.ImplementationType.Best);
 			Console.WriteLine(curve);
 
-			var keys = curve.generateKeyPair();
+			var keys = curve.GenerateKeyPair();
+			GC.KeepAlive(keys);
 		}
 	}
 }

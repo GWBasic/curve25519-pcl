@@ -15,22 +15,26 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using curve25519.bc_crypto.digests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using org.whispersystems.curve25519.csharp;
 
 namespace org.whispersystems.curve25519
 {
-    public class BouncyCastleDotNETSha512Provider : org.whispersystems.curve25519.csharp.ISha512
+    /// <summary>
+    /// Common for all implementations of providers Curve25519.
+    /// </summary>
+    public interface ICurve25519Provider
     {
-        public void CalculateDigest(byte[] digestOut, byte[] inData, long length)
-        {
-            Sha512Digest d = new Sha512Digest();
-            d.BlockUpdate(inData, 0, (int)length);
-            d.DoFinal(digestOut, 0);
-        }
+        byte[] CalculateAgreement(byte[] ourPrivate, byte[] theirPublic);
+        byte[] CalculateSignature(byte[] random, byte[] privateKey, byte[] message);
+        byte[] GeneratePrivateKey();
+        byte[] GeneratePrivateKey(byte[] random);
+        byte[] GeneratePublicKey(byte[] privateKey);
+        byte[] GetRandomBytes(int length);
+
+		bool IsNative { get; }
+        
+		SecureRandomProvider RandomProvider { set; }
+		ISha512 Sha512Provider { set; }
+        bool VerifySignature(byte[] publicKey, byte[] message, byte[] signature);
     }
 }

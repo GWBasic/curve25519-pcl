@@ -27,7 +27,6 @@ namespace org.whispersystems.curve25519.csharp
                                byte[] curve25519_privkey_in)
         {
             Ge_p3 ed = new Ge_p3(); /* Ed25519 pubkey point */
-            int[] ed_y = new int[10];
             int[] ed_y_plus_one = new int[10];
             int[] one_minus_ed_y = new int[10];
             int[] inv_one_minus_ed_y = new int[10];

@@ -39,7 +39,7 @@ namespace Curve25519ProfilingHarness
 
 			var stopWatch = Stopwatch.StartNew();
 
-            var curve = Curve25519.getInstance(Curve25519.BEST);
+            var curve = Curve25519.ConstructInstance(Curve25519.ImplementationType.Best);
 
             for (int i = 0; i < TEST_COUNT; i++)
             {

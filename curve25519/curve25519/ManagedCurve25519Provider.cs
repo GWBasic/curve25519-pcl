@@ -28,7 +28,7 @@ namespace curve25519
     /// <summary>
     /// Default PCL-compatible implementation of Curve25519
     /// </summary>
-    public class CSharpCurve25519Provider : BaseCSharpCurve25519Provider
+    public class ManagedCurve25519Provider : Curve25519Provider
     {
         //Note: For now, I'm sticking with the Bouncy Castle SHA 512 implementation,
         //because it is pure C#. The PCLCrypto random provider is probably the only part
@@ -38,19 +38,19 @@ namespace curve25519
         //a pure C# way to reliably produce random numbers. Such an implementation
         //would have to go through a lot of scrutiny before being used here.
 
-        public CSharpCurve25519Provider() :
+        public ManagedCurve25519Provider() :
             base(new BouncyCastleDotNETSha512Provider(), new PCLSecureRandomProvider())
         {
         }
 
-        public CSharpCurve25519Provider(ISha512 sha, SecureRandomProvider random)
+        public ManagedCurve25519Provider(ISha512 sha, SecureRandomProvider random)
             : base(sha, random)
         {
         }
 
-        public override bool isNative()
+        public override bool IsNative
         {
-            return false;
+			get { return false; }
         }
     }
 }

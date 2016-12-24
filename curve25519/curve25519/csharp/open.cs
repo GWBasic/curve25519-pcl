@@ -50,7 +50,7 @@ namespace org.whispersystems.curve25519.csharp
             if (Ge_frombytes.ge_frombytes_negate_vartime(A, pk) != 0) return -1;
 
             byte[] pubkeyhash = new byte[64];
-            sha512provider.calculateDigest(pubkeyhash, pk, 32);
+            sha512provider.CalculateDigest(pubkeyhash, pk, 32);
 
             Array.Copy(pk, 0, pkcopy, 0, 32);
             Array.Copy(sm, 0, rcopy, 0, 32);
@@ -58,7 +58,7 @@ namespace org.whispersystems.curve25519.csharp
 
             Array.Copy(sm, 0, m, 0, (int)smlen);
             Array.Copy(pkcopy, 0, m, 32, 32);
-            sha512provider.calculateDigest(h, m, smlen);
+            sha512provider.CalculateDigest(h, m, smlen);
             Sc_reduce.sc_reduce(h);
 
             Ge_double_scalarmult.ge_double_scalarmult_vartime(R, h, A, scopy);

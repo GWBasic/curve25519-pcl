@@ -96,7 +96,7 @@ namespace org.whispersystems.curve25519
             return provider.isNative();
         }
 
-        public byte [] generatePrivateKey()
+        public byte [] GeneratePrivateKey()
         {
             return provider.generatePrivateKey();
         }
@@ -106,7 +106,7 @@ namespace org.whispersystems.curve25519
             return provider.generatePrivateKey(random);
         }
 
-        public byte [] generatePublicKey(byte [] privateKey)
+        public byte [] GeneratePublicKey(byte [] privateKey)
         {
             return provider.generatePublicKey(privateKey);
         }

@@ -15,19 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using org.whispersystems.curve25519;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace curve25519ProfilingHarness
+using org.whispersystems.curve25519;
+
+namespace Curve25519ProfilingHarness
 {
     class Program
     {
         private const int TEST_COUNT = 100;
-        private const int BYTES_SIZE = 32;
 
         /// <summary>
         /// Plug code in here like a unit test to see it in the Diagnostic Tools window.
@@ -35,22 +36,21 @@ namespace curve25519ProfilingHarness
         static void Main(string[] args)
         {
             Console.WriteLine("BEGIN...");
-            DateTime start = DateTime.UtcNow;
 
-            Curve25519 curve = Curve25519.getInstance(Curve25519.BEST);
+			var stopWatch = Stopwatch.StartNew();
 
-            byte[] private_key = new byte[BYTES_SIZE];
-            byte[] public_key = new byte[BYTES_SIZE];
+            var curve = Curve25519.getInstance(Curve25519.BEST);
 
             for (int i = 0; i < TEST_COUNT; i++)
             {
-                private_key = curve.generatePrivateKey();
-                public_key = curve.generatePublicKey(private_key);
+				var privateKey = curve.GeneratePrivateKey();
+                curve.GeneratePublicKey(privateKey);
             }
 
-            DateTime end = DateTime.UtcNow;
+			stopWatch.Stop();
+
             Console.WriteLine("END...");
-            Console.WriteLine("Time elapsed (in ms): " + (end.Subtract(start).TotalMilliseconds));
+			Console.WriteLine($"Time elapsed (in ms): {stopWatch.ElapsedMilliseconds}");
             Console.ReadLine();
         }
     }

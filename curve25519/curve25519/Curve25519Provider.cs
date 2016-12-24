@@ -1,4 +1,4 @@
-﻿/** 
+/** 
  * Copyright (C) 2015 langboost
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -15,10 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using org.whispersystems.curve25519.csharp;
+using Whispersystems.Curve25519.csharp;
 using System;
 
-namespace org.whispersystems.curve25519
+namespace Whispersystems.Curve25519
 {
     /// <summary>
     /// Curve255919 in pure C#, without "donna" performance optimizations.

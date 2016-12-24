@@ -1,4 +1,4 @@
-﻿/** 
+/** 
  * Copyright (C) 2015 langboost
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@ using System.Reflection;
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-namespace org.whispersystems.curve25519
+namespace Whispersystems.Curve25519
 {
 	/// <summary>
 	/// A Curve25519 interface for generating keys, calculating agreements, creating signatures, and verifying signatures.

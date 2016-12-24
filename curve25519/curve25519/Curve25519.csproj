@@ -8,7 +8,7 @@
     <ProjectGuid>{A7089355-5735-4E2B-929B-E7D727E3E41A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>curve25519</RootNamespace>
+    <RootNamespace>Whispersystems.Curve25519</RootNamespace>
     <AssemblyName>curve25519</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>

@@ -1,4 +1,4 @@
-﻿/** 
+/** 
  * Copyright (C) 2015 langboost
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -21,8 +21,8 @@ using Windows.Storage.Streams;
 using Windows.Security.Cryptography;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Collections.Generic;
-using org.whispersystems.curve25519;
-using org.whispersystems.curve25519.csharp;
+using Whispersystems.curve25519;
+using Whispersystems.curve25519.csharp;
 using System.Text;
 
 namespace Curve25519WinRT.WindowsPhone_Tests

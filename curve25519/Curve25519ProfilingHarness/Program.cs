@@ -1,4 +1,4 @@
-﻿/** 
+/** 
  * Copyright (C) 2015 langboost
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using org.whispersystems.curve25519;
+using Whispersystems.Curve25519;
 
 namespace Curve25519ProfilingHarness
 {

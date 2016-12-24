@@ -1,4 +1,4 @@
-﻿/** 
+/** 
  * Copyright (C) 2015 langboost
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 
 using curve25519;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
-using org.whispersystems.curve25519;
+using Whispersystems.curve25519;
 using System;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;

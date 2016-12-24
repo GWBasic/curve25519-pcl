@@ -77,7 +77,7 @@
   <ItemGroup>
     <ProjectReference Include="..\curve25519\curve25519.csproj">
       <Project>{a7089355-5735-4e2b-929b-e7d727e3e41a}</Project>
-      <Name>curve25519</Name>
+      <Name>Curve25519</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

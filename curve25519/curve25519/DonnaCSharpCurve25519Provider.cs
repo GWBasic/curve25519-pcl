@@ -1,4 +1,4 @@
-﻿
+
 
 using curve25519.donna;
 /** 
@@ -17,8 +17,8 @@ using curve25519.donna;
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-using org.whispersystems.curve25519;
-using org.whispersystems.curve25519.csharp;
+using Whispersystems.Curve25519;
+using Whispersystems.Curve25519.csharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;

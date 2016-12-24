@@ -1,4 +1,4 @@
-﻿/** 
+/** 
  * Copyright (C) 2015 langboost
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -22,9 +22,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace org.whispersystems.curve25519
+namespace Whispersystems.Curve25519
 {
-    public class BouncyCastleDotNETSha512Provider : org.whispersystems.curve25519.csharp.ISha512
+    public class BouncyCastleDotNETSha512Provider : Whispersystems.Curve25519.csharp.ISha512
     {
         public void CalculateDigest(byte[] digestOut, byte[] inData, long length)
         {

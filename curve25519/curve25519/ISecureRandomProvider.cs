@@ -1,4 +1,4 @@
-﻿/** 
+/** 
  * Copyright (C) 2015 langboost
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace org.whispersystems.curve25519
+namespace Whispersystems.Curve25519
 {
     /// <summary>
     /// Provider for secure random material for key generation, etc.

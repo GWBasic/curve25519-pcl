@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "curve25519", "curve25519\curve25519.csproj", "{A7089355-5735-4E2B-929B-E7D727E3E41A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Curve25519", "curve25519\curve25519.csproj", "{A7089355-5735-4E2B-929B-E7D727E3E41A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "curve25519Tests", "curve25519Tests\curve25519Tests.csproj", "{12D04A31-1196-4EA4-AA1A-CBDB78EE088A}"
 EndProject

@@ -1,4 +1,4 @@
-﻿/** 
+/** 
  * Copyright (C) 2015 langboost
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 
 using System;
 
-namespace org.whispersystems.curve25519.csharp
+namespace Whispersystems.Curve25519.csharp
 {
 
     public class Curve_sigs

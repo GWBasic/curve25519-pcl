@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-using org.whispersystems.curve25519;
+using Whispersystems.Curve25519;
 
 namespace LearnToUseCurve25519
 {
@@ -11,8 +11,8 @@ namespace LearnToUseCurve25519
 			var curve = Curve25519.ConstructInstance(Curve25519.ImplementationType.Best);
 			Console.WriteLine(curve);
 
-			var keys = curve.GenerateKeyPair();
-			GC.KeepAlive(keys);
+			var keysA = curve.GenerateKeyPair();
+			var keysB = curve.GenerateKeyPair();
 		}
 	}
 }

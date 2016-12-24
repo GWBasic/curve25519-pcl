@@ -1,4 +1,4 @@
-﻿/** 
+/** 
  * Copyright (C) 2015 langboost
  * 
  * This program is free software: you can redistribute it and/or modify
@@ -39,8 +39,8 @@ namespace curve25519Tests
             byte b = 123;
             byte c = 255;
             byte d = 123;
-            Assert.AreEqual<int>(0, org.whispersystems.curve25519.csharp.Ge_scalarmult_base.equal(b, c));
-            Assert.AreEqual<int>(1, org.whispersystems.curve25519.csharp.Ge_scalarmult_base.equal(b, d));
+            Assert.AreEqual<int>(0, Whispersystems.curve25519.csharp.Ge_scalarmult_base.equal(b, c));
+            Assert.AreEqual<int>(1, Whispersystems.curve25519.csharp.Ge_scalarmult_base.equal(b, d));
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace curve25519Tests
             for (int i = 0; i < test_cases.GetLength(0); i++)
             {
                 //branch-less equality
-                int result = org.whispersystems.curve25519.csharp.Ge_scalarmult_base.equal(test_cases[i, 0], test_cases[i, 1]);
+                int result = Whispersystems.curve25519.csharp.Ge_scalarmult_base.equal(test_cases[i, 0], test_cases[i, 1]);
 
                 int result2 = 0;
                 if (test_cases[i, 0].CompareTo(test_cases[i, 1]) == 0)
@@ -73,14 +73,14 @@ namespace curve25519Tests
         }
 
         /// <summary>
-        /// Verifies org.whispersystems.curve25519.csharp.Ge_scalarmult_base.negative properly detects negative numbers in a branch-less way.
+        /// Verifies Whispersystems.curve25519.csharp.Ge_scalarmult_base.negative properly detects negative numbers in a branch-less way.
         /// </summary>
         [TestMethod]
         public void TestNegative_Ge_scalarmult_base_negative()
         {
             for (sbyte b = sbyte.MinValue; b < sbyte.MaxValue; b++)
             {
-                int result = org.whispersystems.curve25519.csharp.Ge_scalarmult_base.negative(b);
+                int result = Whispersystems.curve25519.csharp.Ge_scalarmult_base.negative(b);
                 bool bResult2 = b < 0;
                 int result2 = 0;
                 if (bResult2)
@@ -100,7 +100,7 @@ namespace curve25519Tests
             int digestExpectedLength = 64; //for SHA 512, this is the expected length
 
             //The Bouncy Castle way
-            org.whispersystems.curve25519.BouncyCastleDotNETSha512Provider provider = new org.whispersystems.curve25519.BouncyCastleDotNETSha512Provider();
+            Whispersystems.curve25519.BouncyCastleDotNETSha512Provider provider = new Whispersystems.curve25519.BouncyCastleDotNETSha512Provider();
             byte[] digestActual = new byte[digestExpectedLength];
             provider.calculateDigest(digestActual, message, message.Length);
 
